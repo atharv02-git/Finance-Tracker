@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav className="navbar">
       <ul>
         <li className="title">
-          <Link to="/">myMoney</Link>
+          <Link to="/">MyFinance</Link>
         </li>
 
         <li>
