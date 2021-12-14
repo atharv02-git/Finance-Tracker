@@ -3,12 +3,12 @@ import "firebase/firestore";
 import "firebase/auth"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA6sqxz1VprWTrqLu0V1ntK55C4YZi5bUo",
-  authDomain: "myfinance-60980.firebaseapp.com",
-  projectId: "myfinance-60980",
-  storageBucket: "myfinance-60980.appspot.com",
-  messagingSenderId: "221940410146",
-  appId: "1:221940410146:web:ed31ae32f6a63f3879e77b",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 // init firebase
