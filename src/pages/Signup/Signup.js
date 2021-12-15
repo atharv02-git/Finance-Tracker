@@ -1,20 +1,22 @@
-import {useState} from "react";
+import { useState } from "react";
+import { useSignup } from "../../hooks/useSignup";
 
 // Styles
 import "./Signup.css";
 
 export default function Signup() {
-    const[email,setEmail] = useState("");
-    const[password,setPassword] = useState("");
-    const[displayName,setDisplayName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const { signup, isPending, error } = useSignup();
 
-    // Submit handler
-    const signupSubmitHandler = (e) => {
-        e.preventDefault();
-        console.log(email, password,displayName)
-    }
+  // Submit handler
+  const signupSubmitHandler = (e) => {
+    e.preventDefault();
+    signup(email, password, displayName);
+  };
 
-    return (
+  return (
     <form onSubmit={signupSubmitHandler} className="login-form">
       <h2>Signup</h2>
       <label>
@@ -34,14 +36,16 @@ export default function Signup() {
         />
       </label>
       <label>
-          <span>Display Name:</span>
-          <input 
+        <span>Display Name:</span>
+        <input
           type="text"
           onChange={(e) => setDisplayName(e.target.value)}
           value={displayName}
         />
       </label>
-      <button className="btn">Signup</button>
+      { !isPending && <button className="btn">sign up</button> }
+      { isPending && <button className="btn" disabled>loading</button> }
+      {error && <p>{error}</p>}
     </form>
   );
 }
