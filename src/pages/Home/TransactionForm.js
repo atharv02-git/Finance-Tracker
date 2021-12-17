@@ -24,7 +24,7 @@ export default function TransactionForm() {
         </label>
 
         <label>
-          <span>Add Transaction Amount (Rs):</span>
+          <span>Amount (Rs):</span>
           <input
             type="number"
             required
