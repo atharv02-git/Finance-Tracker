@@ -1,4 +1,5 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
+import { projectAuth } from "../firebase/config";
 
 export const AuthContext = createContext();
 
@@ -8,13 +9,26 @@ export const authReducer = (state, action) => {
       return { ...state, user: action.payload };
     case "LOGOUT":
       return { ...state, user: null };
+    case "AUTH_IS_READY":
+      return { ...state, user: action.payload, authIsReady: true };
     default:
       break;
   }
 };
 
 export const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, { user: null });
+  const [state, dispatch] = useReducer(authReducer, {
+    user: null,
+    // now checking if the user is still logged in after the page refresh, so the initial value is false it means the user is not logged in
+    authIsReady: false,
+  });
+  // useEffect runs only once when the the auth state changes
+  useEffect(() => {
+    const unSubscribe = projectAuth.onAuthStateChanged((user) => {
+      dispatch({ type: "AUTH_IS_READY", payload: user });
+      unSubscribe();
+    });
+  }, []);
   console.log("AuthContext state:", state);
 
   return (
