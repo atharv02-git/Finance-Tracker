@@ -13,9 +13,9 @@ export default function Home() {
   const { document, error } = useCollection(
     "transactions",
     ["uid", "==", user.uid],
-    ["createdAt","desc"]
+    ["createdAt", "desc"]
   );
-  // console.log(document)
+
   return (
     <div className="container">
       <div className="content">
