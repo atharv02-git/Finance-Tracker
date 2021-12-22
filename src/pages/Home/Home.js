@@ -10,7 +10,12 @@ import "./Home.css";
 
 export default function Home() {
   const { user } = useAuthContext();
-  const { document, error } = useCollection("transactions");
+  const { document, error } = useCollection(
+    "transactions",
+    ["uid", "==", user.uid],
+    ["createdAt","desc"]
+  );
+  // console.log(document)
   return (
     <div className="container">
       <div className="content">
