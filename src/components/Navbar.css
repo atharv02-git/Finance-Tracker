@@ -1,10 +1,11 @@
 .navbar {
   width: 100%;
-  background: #effaf0;
+  background: #1c374e;
   padding: 20px 10px;
   box-sizing: border-box;
   position: fixed;
   top: 0px;
+  z-index: 99;
 }
 .navbar ul {
   display: flex;
@@ -23,6 +24,6 @@
   margin-left: 16px;
 }
 .navbar a {
-  color: #333;
+  color: #fff;
   text-decoration: none;
 }
