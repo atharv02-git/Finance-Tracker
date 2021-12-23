@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 function App() {
   const { authIsReady, user } = useAuthContext();
   return (
-    <div className="App">
+    <div className="App" style={{paddingTop: 60}}>
       {authIsReady && (
         <BrowserRouter>
           <Navbar />
